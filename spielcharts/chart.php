@@ -4,6 +4,10 @@ include("Code/dbConnect.php");
 $gruppenname = $_SESSION['gruppenname'];
 $anzSpieler = $_SESSION['anzSpieler'];
 $username = $_SESSION['username'];
+$spielername;
+if(!isset($username)) {
+  header('Location: index.php');
+}
 //echo $anzSpieler;
 
 
@@ -112,18 +116,7 @@ else {
 <?php
 
 //input felder ausgeben
-$y = 1;
-while($y <= $anzSpieler) {
-  echo "<td><input class='eingabe' type='text' name='eingabe$y' value='' placeholder=''></td>";
-  $y++;
 
-}
-
-
-echo "</tr></table>";
-echo "<form>";
-echo "</div>";
-echo "<input id='submit' type='submit' name='submit' value='Eintragen'>";
 
 
 
@@ -131,7 +124,7 @@ echo "<input id='submit' type='submit' name='submit' value='Eintragen'>";
 //--Punkte eintragen--
 if(isset($_POST['submit'])) {
 
-
+echo "<tr>";
 
   $x = 1;
   while($x <= $anzSpieler) {
@@ -139,14 +132,17 @@ if(isset($_POST['submit'])) {
     echo $spieler . "<br>";
     if($result = $connect->query("SELECT $spieler FROM gruppennamen WHERE gruppenname = '$gruppenname'")){
       if($result->num_rows > 0) {
-        //PROBLEM!!!
-        $sql = $connect->query("SELECT MAX(id_gruppe) from $gruppenname");
-        $counter = mysql_fetch_oject($sql);
-        echo $counter;
+        //PROBLEM!!! -> id_gruppe sollte gezogen werden, damit abgeglichen werden kann, ob bereits ein Eintrag besteht
+
+
+
         while(($row = $result->fetch_object())) {
           $str = $row->$spieler;
           echo "str: " . $str . "<br>";
           if($eingabe = $_POST['eingabe' . $x]) {
+            echo "drin<br>";
+
+            echo "<td>$eingabe</td>";
             echo "eingabe: " .  $eingabe . "<br>";
             if($query = $connect->query("INSERT INTO $gruppenname (username, $str) VALUES ('$username', '$eingabe')")){
               echo "Daten eingetragen" . "<br>";
@@ -168,7 +164,43 @@ if(isset($_POST['submit'])) {
     $x++;
   }
 
+  echo "</tr>";
+
+
+
+
 }
+else {
+  echo "Submit not set";
+}
+
+
+$y = 1;
+while($y <= $anzSpieler) {
+  echo "<td><input class='eingabe' type='text' name='eingabe$y' value='' placeholder=''></td>";
+  $y++;
+
+}
+
+
+echo "</tr></table>";
+echo "<form>";
+echo "</div>";
+echo "<input id='submit' type='submit' name='submit' value='Eintragen'>";
+
+
+
+/*function pullOutOfDB($spieler, $gruppenname) {
+  if($result = $connect->query("SELECT $spieler FROM $gruppennamen")) {
+    echo "Result: " . $result;
+  }
+
+
+
+
+}*/
+
+//pullOutOfDB($spielername, $gruppenname);
 
 
     ?>
