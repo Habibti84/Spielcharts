@@ -44,6 +44,7 @@ if($query = $connect->query("SELECT * FROM gruppennamen")) {
       username VARCHAR(30),
       $spieler1 VARCHAR(30),
       $spieler2 VARCHAR(30),
+      insertPoints DATETIME,
       PRIMARY KEY (id_gruppe),
       FOREIGN KEY (username) REFERENCES userdata(username))")) {
 
