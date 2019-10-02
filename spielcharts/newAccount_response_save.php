@@ -12,7 +12,7 @@ $passwordRep = $_POST["passwordRep"];
 if (isset($_POST["logIn"])) {
 
   if($connect->query("SELECT * FROM userdata") == false) {
-    $query = $connect->query("CREATE TABLE userdata (username VARCHAR(30), password VARCHAR(255), PRIMARY KEY (username))");
+    $query = $connect->query("CREATE TABLE userdata (username VARCHAR(30), password VARCHAR(255), PRIMARY KEY (username)) ENGINE=InnoDB");
     echo $connect->error;
 
   }

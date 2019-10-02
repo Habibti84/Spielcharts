@@ -5,7 +5,7 @@
 }
 
 h1 {
-  margin: 80px auto 20px auto;
+  margin: 20px auto;
   text-align: center;
   font-size: 45px;
   font-weight: 600;
@@ -28,6 +28,7 @@ input {
   display: block;
   margin: 5px auto;
   text-align: center;
+  border-radius: 5px;
 }
 
 .second {
@@ -155,6 +156,7 @@ td {
 }
 
 .spieler {
+  text-align: center;
   background-color: #8f142a;
   color: white;
   letter-spacing: 0.1em;
@@ -169,6 +171,11 @@ td {
   width: 10%;
 }
 
-.invalide {
+.is-invalid {
+  color: red;
   border: 1px solid red;
+}
+
+td {
+  border: 1px solid black;
 }

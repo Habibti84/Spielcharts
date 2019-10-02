@@ -11,17 +11,13 @@ $username = $_SESSION['username'];
 $_SESSION['username'] = $username;
 echo $gruppenname;
 
-function gruppennameAnzeigen() {
-  
-}
-
 
 
 
 
 if($query = $connect->query("SELECT * FROM gruppennamen")) {
 
-  $query = $connect->query("INSERT INTO gruppennamen (gruppenname, username) VALUES ('$gruppenname', '$username')");
+  $query = $connect->query("INSERT INTO gruppennamen (gruppenname, username, anzSpieler) VALUES ('$gruppenname', '$username', '$anzSpieler')");
 
   if(isset($_POST["spieler1"])) {
     $spieler1 = str_replace(" ", "", $_POST["spieler1"]);
@@ -34,19 +30,29 @@ if($query = $connect->query("SELECT * FROM gruppennamen")) {
 
     }
     else {
-      echo "Spieler 2 fehlt";
+
+      echo "<SCRIPT type='text/javascript'> //not showing me this
+      alert('Name für Spieler 2 fehlt');
+      window.location.replace(\"neuesSpiel_anzSpieler.php\");
+      </SCRIPT>";
     }
   }
   else {
-    echo "Spieler 1 fehlt";
+    echo "<SCRIPT type='text/javascript'> //not showing me this
+    alert('Name für Spieler 1 fehlt');
+    window.location.replace(\"neuesSpiel_anzSpieler.php\");
+    </SCRIPT>";
   }
 
 
   if (isset($_POST["gruppenname"])){
     if($query = $connect->query("CREATE TABLE $gruppenname (
+      id_gruppe int NOT NULL AUTO_INCREMENT,
       username VARCHAR(30),
       $spieler1 VARCHAR(30),
       $spieler2 VARCHAR(30),
+      insertPoints DATETIME,
+      PRIMARY KEY (id_gruppe),
       FOREIGN KEY (username) REFERENCES userdata(username))")) {
 
         if(isset($_POST["spieler3"])) {
@@ -107,7 +113,20 @@ if($query = $connect->query("SELECT * FROM gruppennamen")) {
 }
 
 else {
-  $query = $connect->query("CREATE TABLE gruppennamen (gruppenname VARCHAR(30), username VARCHAR(30), spieler1 VARCHAR(30), spieler2 VARCHAR(30), spieler3 VARCHAR(30), spieler4 VARCHAR(30), spieler5 VARCHAR(30), spieler6 VARCHAR(30), spieler7 VARCHAR(30), spieler8 VARCHAR(30), PRIMARY KEY (gruppenname), FOREIGN KEY (username) REFERENCES userdata (username))");
+  $query = $connect->query("CREATE TABLE gruppennamen (
+    gruppenname VARCHAR(30),
+    username VARCHAR(30),
+    anzSpieler INT(2),
+    spieler1 VARCHAR(30),
+    spieler2 VARCHAR(30),
+    spieler3 VARCHAR(30),
+    spieler4 VARCHAR(30),
+    spieler5 VARCHAR(30),
+    spieler6 VARCHAR(30),
+    spieler7 VARCHAR(30),
+    spieler8 VARCHAR(30),
+    PRIMARY KEY (gruppenname),
+    FOREIGN KEY (username) REFERENCES userdata (username))");
 
 
 }

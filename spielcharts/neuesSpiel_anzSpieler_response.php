@@ -27,7 +27,7 @@ $_SESSION['username'] = $username;
 
 
   echo '<form class="second" action="tabelle_gruppeErstellen.php" method="post">';
-  echo '<input id="gruppenname" type="text" name="gruppenname" placeholder="Gruppenname">';
+  echo '<input id="gruppenname" type="text" name="gruppenname" placeholder="Was möchtet ihr spielen?">';
 
 
 
