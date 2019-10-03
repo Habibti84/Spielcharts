@@ -7,7 +7,7 @@ $username = $_SESSION['username'];
 $_SESSION['gruppenname'] = $gruppenname;
 $_SESSION['anzSpieler'] = $anzSpieler;
 $_SESSION['username'] = $username;
-$spielername;
+
 
 if(!isset($username)) {
   header('Location: index.php');
@@ -92,37 +92,49 @@ if(!isset($username)) {
 
           //---------Ende spielernamen ausgeben
 
-          //--Spielername in Tabelle eintragen--
-          /*if($result = $connect->query("SELECT * FROM $gruppenname")) {
-
-          $x = 1;
-          while($x <= $anzSpieler) {
-          $spieler = "Spieler" .$x;
-          //echo $spieler;
-          $result = $connect->query("SELECT $spieler FROM gruppennamen");
-          if($result->num_rows > 0) {
-          $row = $result->fetch_object();
-          $spielername = $row->$spieler;
-          //echo "$spielername";
-        }
-        $result = $connect->query("ALTER TABLE $gruppenname ADD COLUMN $spielername VARCHAR(30) ");
-        //$result = $connect->query("INSERT INTO $gruppenname ($spieler) VALUES '$spielername' WHERE username = '$username'");
-        $x++;
-      }
-
-    }
-    else {
-    echo $gruppenname . " existiert nicht";
-
-  }*/
-
-
 
   ?>
 
   <form class="" action="chart_response.php" method="post">
 
     <?php
+
+    //Punkte aus Datenbank ausgeben
+    if($result = $connect->query("SELECT * FROM spielstaende WHERE gruppenname = '$gruppenname'")) {
+      if($result->num_rows > 0) {
+        while($row = $result->fetch_object()) {
+          echo "<tr>";
+          $x = 1;
+          while($x <= $anzSpieler) {
+            $spieler = 'spieler' . $x;
+            $ergebnis = $row->$spieler;
+            echo "<td>$ergebnis</td>";
+            $x++;
+          }
+          echo "</tr>";
+        }
+
+      }
+    }
+
+    else{
+      echo $connect->error;
+    }
+
+    //Summe aller Punkte ausgeben
+    echo "<tr>";
+    $x = 1;
+    while($x <= $anzSpieler) {
+      $spieler = "spieler" . $x;
+      if($result = $connect->query("SELECT SUM($spieler) AS total FROM spielstaende WHERE gruppenname = '$gruppenname'")) {
+        $tot = $result->fetch_object();
+        $plytot = $tot->total;
+
+        echo "<td><span>Total: $plytot</span></td>";
+      }
+      $x++;
+    }
+    echo "</tr>";
 
 
 

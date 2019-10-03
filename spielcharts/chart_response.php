@@ -32,7 +32,7 @@ if(isset($_POST['submit'])) {
               }
     }
     else {
-      if($result = $connect->query("INSERT INTO spielstaende (gruppenname, $spieler) VALUES ('$gruppenname', '$eingabe')")){
+      if($result = $connect->query("INSERT INTO spielstaende (gruppenname, anzSpieler, $spieler) VALUES ('$gruppenname', '$anzSpieler', '$eingabe')")){
 
               }
               else {
