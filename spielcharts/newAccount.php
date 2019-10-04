@@ -6,6 +6,8 @@ session_start();
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="style/main.css">
@@ -14,30 +16,21 @@ session_start();
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.php">Zurück <span class="sr-only">(current)</span></a>
-        </li>
-      </ul>
-    </div>
+    <a class="navbar-brand" href="index.php">Zurück</a>
   </nav>
 
   <h1>Neues Konto erstellen</h1>
 
   <form id="login" action="newAccount_response_save.php" method="post">
-    <input id="username" type="text" name="username" min_Len="3" placeholder="Benutzername (min 3 Zeichen)">
-    <input id="userPassword" type="password" name="password" min_Len="6" placeholder="Passwort (min 6 Zeichen)">
+    <input class="userN" type="text" name="username" min_Len="3" placeholder="Benutzername (min 3 Zeichen)">
+    <input class="passW" type="password" name="password" min_Len="6" placeholder="Passwort (min 6 Zeichen)">
     <input id="userPasswordRepeat" type="password" name="passwordRep" placeholder="Passwort bestätigen">
-    <input id="btnSub" class="btn btn-dark" type="submit" name="logIn" value="Erstellen">
+    <input id="btnSub" class="btnSub btn btn-dark" type="submit" name="logIn" value="Erstellen">
   </form>
 
   <footer>
     <a href="http://www.regez-miniart.ch/scherenschnitte/index.html">
-      <img src="Bilder/alpaufzug.jpg" alt="">
+    <img src="Bilder/alpaufzug.jpg" alt="">
     </a>
   </footer>
 

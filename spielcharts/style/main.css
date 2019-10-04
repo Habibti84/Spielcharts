@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
 * {
   font-family: 'Montserrat', sans-serif;
   padding: 0;
@@ -5,13 +7,20 @@
 }
 
 h1 {
-  margin: 20px auto;
+  margin: 2rem auto;
   text-align: center;
-  font-size: 45px;
+  font-size: 3rem;
   font-weight: 600;
 }
 
 h2 {
+  margin: 120px auto 40px auto;
+  text-align: center;
+  font-size: 35px;
+  font-weight: 400;
+}
+
+h4 {
   margin: 120px auto 40px auto;
   text-align: center;
   font-size: 35px;
@@ -24,7 +33,7 @@ h2 {
 
 input {
   width: 25%;
-  height: 35px;
+  height: 2rem;
   display: block;
   margin: 5px auto;
   text-align: center;
@@ -39,7 +48,7 @@ input {
   display: block;
   text-align: center;
   margin-bottom: 10px;
-  font-size: 14px;
+  font-size: 1rem;
   color: black;
 }
 
@@ -49,6 +58,7 @@ input {
 
 .bottom {
   margin-top: 30px;
+  font-size: 1rem;
 }
 
 a {
@@ -67,6 +77,7 @@ margin: auto;
 
 
 .btn {
+  display: block;
   background-color: #38394d;
   border: 1px solid #38394d;
   color: white;
@@ -89,6 +100,9 @@ select .btn {
   width: 25%;
 }
 
+.pkt:nth-child(even) {background: white}
+.pkt:nth-child(odd) {background: #e9eaef}
+
 
 
 .onlyButtons {
@@ -105,14 +119,20 @@ select .btn {
   border: 1px solid #acacac;
 }
 
+
+
 p {
   text-align: center;
   margin-top: 25px;
 }
 
+.input {
+  background-color: white;
+}
+
 footer {
   width: 100%;
-  position: absolute;
+  position:fixed;
   margin: auto;
   bottom: 0;
 }
@@ -122,18 +142,12 @@ footer img {
 }
 
 
-/*neuesSpiel_anzSpieler_response.php*/
+
 
 #gruppenname {
   margin-bottom: 20px;
 }
 
-/*.inpt {
-  width: 100%;
-}
-.spieler {
-  display: inline-block;
-}*/
 
 #tblH1 {
   font-size: 1.5em;
@@ -148,23 +162,32 @@ footer img {
 
 tr {
   width: 80%;
+  font-size: 1rem;
+
 }
 
 td {
   width: 50%;
   margin: 1% 0;
+  padding: 0.5rem;
 }
 
 .spieler {
   text-align: center;
-  background-color: #8f142a;
+  background-color: #38394d;
   color: white;
   letter-spacing: 0.1em;
   padding: 10px 0;
 }
 
+.sum {
+  background-color: #38394d;
+  color: white;
+}
+
 .eingabe {
-  height: 20px;
+  width: 75%;
+  height: 1.6rem;
 }
 
 #submt {
@@ -179,9 +202,68 @@ td {
 td {
   height: 1.5rem;
   text-align: center;
-  border: 1px solid black;
 }
 
 td span {
   font-weight: 900;
+}
+
+.extraMarg {
+  margin-bottom: 255px;
+}
+
+
+@media screen and (max-width: 990px) {
+
+  h1 {
+    margin-top: 4rem;
+    font-size: 4rem;
+  }
+
+  h4 {
+    font-size: 3rem;
+  }
+
+  input, input.btn, select.btn, .btn {
+    text-align: center;
+    width: 60%;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+
+  input.btnEing {
+    width: 30%;
+    height: 2.5rem;
+    padding: 0;
+  }
+
+  .eingabe {
+    font-size: 1rem;
+  }
+
+  .second label {
+    font-size: 1.5rem;
+  }
+
+  .navbar {
+    font-size: 1.5rem;
+  }
+  button.navbar-toggler {
+    font-size: 1.5rem;
+  }
+  a.navbar-brand {
+    font-size: 2rem;
+  }
+
+  a.dropdown-item {
+    font-size: 1.5rem;
+  }
+
+  footer img {
+    height: 20%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
 }

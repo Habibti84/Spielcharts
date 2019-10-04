@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+session_unset();
 include("Code/dbConnect.php");
 
 $username = str_replace(" ", "", $_POST["username"]);

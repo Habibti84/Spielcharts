@@ -1,17 +1,15 @@
 $(document).ready(function() {
   var formValid;
 
-  $('#username').focus(function() {
+  $('.userN').focus(function() {
     $(this).removeClass('is-invalid');
-    })
+  })
 
-  $('#username').blur(function() {
+  $('.userN').blur(function() {
     var pwdReqment = /[A-Za-z0-9]/;
     if($(this).val().length < $(this).attr('min_Len') || !pwdReqment.test($(this).val())) {
       $(this).addClass('is-invalid');
-      $(this).attr('placeholder', 'Benutzername eingeben');
       formValid = false;
-      console.log(formValid);
     }
     else {
       $(this).removeClass('is-invalid');
@@ -19,26 +17,30 @@ $(document).ready(function() {
     }
   })
 
-  $('#userPassword').focus(function() {
+  $('.passW').focus(function() {
     $(this).removeClass('is-invalid');
-    })
 
-  $("#userPassword").blur(function(){
+  })
+
+  $(".passW").blur(function(){
     var pwdReqment = /[A-Za-z0-9]/;
     if($(this).val().length < $(this).attr('min_Len') ||  !pwdReqment.test($(this).val()) ) {
-      console.log("Hallo2");
       $(this).addClass('is-invalid');
+      $(this).val("");
+      $(this).attr('placeholder', 'Passwort (min 6 Zeichen)');
       formValid = false;
     }
     else {
-        $(this).removeClass('is-invalid');
-        formValid = true;
+      $(this).removeClass('is-invalid');
+      formValid = true;
     }
   });
 
   $('#userPasswordRepeat').blur(function() {
-    if($('#userPassword').val() != $('#userPasswordRepeat').val()) {
+    if($('.passW').val() != $('#userPasswordRepeat').val()) {
       $(this).addClass('is-invalid');
+      $(this).val("");
+      $(this).attr('placeholder', 'Passwörter stimmen nicht überein');
       formValid = false;
     }
     else {
@@ -47,18 +49,40 @@ $(document).ready(function() {
     }
   })
 
-  console.log(formValid);
 
 
-$('#btnSub').submit(function(event){
-  alert("heieiei");
-  if(formValid != true) {
-    alert("Heieiei");
+  $('.eingabe').blur(function(event) {
+      var valid = /[0-9]/;
+      if($(this).val() == "") {
+      $(this).addClass('is-invalid');
+      formValid = false;
+    }
+    else {
+      formValid = true;
+      $(this).removeClass('is-invalid');
+    }
 
-    event.preventDefault();
+    $('.eingabe').focus(function() {
+      $(this).removeClass('is-invalid');
+    })
+  })
 
-  }
-})
+  //Autofocus auf inputfeld
+  /*$('#eingabe1').focus();
+	$("#eingabe1:text:visible:first").focus();*/
+
+  
+
+
+console.log(formValid);
+  $('.btnSub').click(function(event){
+    console.log(formValid);
+    if(formValid != true || formValid == false) {
+      console.log("Warum");
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  })
 
 
 

@@ -19,36 +19,46 @@ if(isset($_POST['submit'])) {
   while($x <= $anzSpieler) {
     $spieler = "spieler" . $x;
     $eingabe = $_POST['eingabe' . $x];
-    $sum = $x;
-    $sumSpieler = 'spieler' . $sum;
-    echo $sumSpieler;
-    if($x > 1) {
-      if($result = $connect->query("UPDATE spielstaende SET $sumSpieler = $eingabe")){
 
-              }
-              else {
-                echo "Weitere Daten nicht eingetragen<br>";
-                echo $connect->error;
-              }
+    $name = $eingabe;
+    if(preg_match('/[0-9]/', $name)) {
+      $sum = $x;
+      $sumSpieler = 'spieler' . $sum;
+      echo $sumSpieler;
+      if($x > 1) {
+        if($result = $connect->query("UPDATE spielstaende SET $sumSpieler = $eingabe")){
+
+        }
+        else {
+          echo "Weitere Daten nicht eingetragen<br>";
+          echo $connect->error;
+        }
+      }
+      else {
+        if($result = $connect->query("INSERT INTO spielstaende (gruppenname, anzSpieler, $spieler) VALUES ('$gruppenname', '$anzSpieler', '$eingabe')")){
+
+        }
+        else {
+          echo "1. Daten nicht eingetragen<br>";
+          echo $connect->error;
+        }
+      }
+
     }
+
     else {
-      if($result = $connect->query("INSERT INTO spielstaende (gruppenname, anzSpieler, $spieler) VALUES ('$gruppenname', '$anzSpieler', '$eingabe')")){
-
-              }
-              else {
-                echo "1. Daten nicht eingetragen<br>";
-                echo $connect->error;
-              }
+      echo "<script>console.log('kein match');</script>";
     }
 
-            $x++;
-          }
 
 
-
-
+    $x++;
   }
-  header('Location: chart.php');
 
 
- ?>
+header('Location: chart.php');
+}
+
+
+
+?>
