@@ -4,6 +4,9 @@ include("Code/dbConnect.php");
 
 $username = $_SESSION['username'];
 $_SESSION['username'] = $username;
+if(!isset($username)) {
+  header('Location: index.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,8 +41,9 @@ $_SESSION['username'] = $username;
         </ul>
       </div>
     </nav>
+    <h1 class="title" >Gruppe erstellen</h1>
 
-  <div class="third">
+
 
 
 
@@ -50,7 +54,7 @@ $_SESSION['username'] = $username;
 
 
 
-  echo '<form class="second" action="tabelle_gruppeErstellen.php" method="post">';
+  echo '<form class="one" action="tabelle_gruppeErstellen.php" method="post">';
   echo '<input class="bottom" id="gruppenname" type="text" name="gruppenname" placeholder="Was möchtet ihr spielen?">';
 
 
@@ -63,7 +67,7 @@ $_SESSION['username'] = $username;
     $x++;
     }
 
-    echo '<input class="btn" type="submit" name="weiter" value="Weiter">';
+    echo '<input class="btn extraMarg" type="submit" name="weiter" value="Weiter">';
     echo '</form>';
 
 
@@ -71,7 +75,7 @@ $_SESSION['username'] = $username;
 
  ?>
 
-</div>
+
 
 <footer>
   <a href="http://www.regez-miniart.ch/scherenschnitte/index.html">

@@ -8,6 +8,9 @@ $username = str_replace(" ", "", $_POST["username"]);
 $_SESSION['username'] = $username;
 $password = $_POST["password"];
 $passwordRep = $_POST["passwordRep"];
+if(!isset($username)) {
+  header('Location: index.php');
+}
 
 
 if (isset($_POST["logIn"])) {

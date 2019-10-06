@@ -21,9 +21,9 @@ session_start();
 
   <h1>Neues Konto erstellen</h1>
 
-  <form id="login" action="newAccount_response_save.php" method="post">
-    <input class="userN" type="text" name="username" min_Len="3" placeholder="Benutzername (min 3 Zeichen)">
-    <input class="passW" type="password" name="password" min_Len="6" placeholder="Passwort (min 6 Zeichen)">
+  <form id="login" action="#" method="post">
+    <input id="userName" class="userN inp" type="text" name="username" min_Len="3" placeholder="Benutzername (min 3 Zeichen)">
+    <input class="passW inp" type="password" name="password" min_Len="6" placeholder="Passwort (min 6 Zeichen)">
     <input id="userPasswordRepeat" type="password" name="passwordRep" placeholder="Passwort bestätigen">
     <input id="btnSub" class="btnSub btn btn-dark" type="submit" name="logIn" value="Erstellen">
   </form>

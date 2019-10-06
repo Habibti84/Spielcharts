@@ -26,7 +26,7 @@ if(isset($_POST['submit'])) {
       $sumSpieler = 'spieler' . $sum;
       echo $sumSpieler;
       if($x > 1) {
-        if($result = $connect->query("UPDATE spielstaende SET $sumSpieler = $eingabe")){
+        if($result = $connect->query("UPDATE spielstaende SET $sumSpieler = $eingabe WHERE $sumSpieler IS NULL")){
 
         }
         else {

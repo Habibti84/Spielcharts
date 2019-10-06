@@ -7,7 +7,7 @@
 }
 
 h1 {
-  margin: 2rem auto;
+  margin: 3rem auto;
   text-align: center;
   font-size: 3rem;
   font-weight: 600;
@@ -27,8 +27,19 @@ h4 {
   font-weight: 400;
 }
 
-.first {
-  margin-top: 80px;
+.background {
+  text-align: justify;
+  line-height: 2rem;
+}
+
+.laufendesSpiel p {
+  width: 25%;
+  text-align: left;
+  margin: 0 auto 0.7rem auto;
+}
+
+#mitspieler {
+  font-weight: 900;
 }
 
 input {
@@ -40,24 +51,36 @@ input {
   border-radius: 5px;
 }
 
+
+.first input, .second input {
+  width: 75%;
+
+}
+
 .second {
   margin-top: 0;
 }
 
-.second label {
+.second label, .first label {
   display: block;
   text-align: center;
+  font-size: 1.2rem;
   margin-bottom: 10px;
-  font-size: 1rem;
   color: black;
 }
+
+.first label {
+  margin-top: 0;
+}
+
+
 
 .third {
   margin-top: 100px;
 }
 
 .bottom {
-  margin-top: 30px;
+  margin-top: 1rem;
   font-size: 1rem;
 }
 
@@ -74,7 +97,9 @@ option {
 margin: auto;
 }
 
-
+.one {
+  text-align: center;
+}
 
 .btn {
   display: block;
@@ -83,9 +108,10 @@ margin: auto;
   color: white;
   font-family: 'Montserrat';
   display: block;
-  width: 25.2%;
+  width: 25%;
   height: 35px;
   margin: 5px auto;
+
 }
 
 .third .btn {
@@ -119,11 +145,14 @@ select .btn {
   border: 1px solid #acacac;
 }
 
+a:hover {
+  text-decoration: none;
+}
 
 
-p {
-  text-align: center;
-  margin-top: 25px;
+
+.container p {
+  font-size: 1.2rem;
 }
 
 .input {
@@ -144,9 +173,7 @@ footer img {
 
 
 
-#gruppenname {
-  margin-bottom: 20px;
-}
+
 
 
 #tblH1 {
@@ -195,7 +222,6 @@ td {
 }
 
 .is-invalid {
-  color: red;
   border: 1px solid red;
 }
 
@@ -209,7 +235,7 @@ td span {
 }
 
 .extraMarg {
-  margin-bottom: 255px;
+  margin-bottom: 300px;
 }
 
 
@@ -217,18 +243,18 @@ td span {
 
   h1 {
     margin-top: 4rem;
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   h4 {
     font-size: 3rem;
   }
 
-  input, input.btn, select.btn, .btn {
+  input, input.btn, select.btn, .btn, .first input, .second input {
     text-align: center;
-    width: 60%;
+    width: 90%;
     height: 3rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   input.btnEing {
@@ -241,22 +267,28 @@ td span {
     font-size: 1rem;
   }
 
-  .second label {
-    font-size: 1.5rem;
+  .second input, #btnSub {
+    margin-bottom: 6rem;
   }
 
   .navbar {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   button.navbar-toggler {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   a.navbar-brand {
-    font-size: 2rem;
+    font-size: 1.2rem;
   }
 
   a.dropdown-item {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+  }
+
+  .laufendesSpiel p {
+    width: 90%;
+    text-align: left;
+
   }
 
   footer img {
@@ -266,4 +298,38 @@ td span {
 
 @media screen and (max-width: 600px) {
 
+  input, input.btn, select.btn, .btn, .first input, .second input {
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 2.1rem;
+    margin: 2rem auto;
+  }
+  .background {
+    width: 100%;
+    background-color: #e2e3ea;
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .container p {
+    font-size: 1.3rem;
+  }
+
+  .row {
+    margin-top: 2rem;
+  }
+
+  div.col-sm {
+  padding: 0;
+  }
+
+  .first label, .second label, .first input, .second input {
+    font-size: 1.2rem;
+  }
+
+  .second input, #btnSub {
+    margin-bottom: 7rem;
+  }
 }

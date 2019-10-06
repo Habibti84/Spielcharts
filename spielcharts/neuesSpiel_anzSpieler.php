@@ -4,6 +4,9 @@ include("Code/dbConnect.php");
 
 $username = $_SESSION['username'];
 $_SESSION['username'] = $username;
+if(!isset($username)) {
+  header('Location: index.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -43,12 +46,12 @@ $_SESSION['username'] = $username;
 
 
 
-  <form class="second" action="neuesSpiel_anzSpieler_response.php" method="post">
+  <form class="one" action="neuesSpiel_anzSpieler_response.php" method="post">
 
 
 
 
-    <label class="bottom" for="anzSpieler">Anzahl Spieler:</label>
+    <label for="anzSpieler">Anzahl Spieler:</label>
     <select class="btn" name="anzSpieler">
       <option>1</option>
       <option>2</option>

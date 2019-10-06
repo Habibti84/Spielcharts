@@ -4,7 +4,7 @@ include("Code/dbConnect.php");
 
 $_referer = $_SERVER["HTTP_REFERER"];
 
-if($_referer == 'http://localhost/spielcharts/spielcharts/laufendesSpiel.php' || $_referer == 'http://192.168.1.108/Spielcharts/spielcharts/laufendesSpiel.php') {
+if($_referer == 'http://localhost/spielcharts/spielcharts/laufendesSpiel.php' || $_referer == 'http://192.168.1.108/Spielcharts/spielcharts/laufendesSpiel.php' || $_referer == 'http://192.168.1.107/Spielcharts/spielcharts/laufendesSpiel.php') {
   $y = $_POST['counter'];
   $c = 1;
   while($c <= $y) {
@@ -17,7 +17,7 @@ if($_referer == 'http://localhost/spielcharts/spielcharts/laufendesSpiel.php' ||
   }
 
 }
-else if($_referer == 'http://localhost/spielcharts/spielcharts/neuesSpiel_anzSpieler_response.php' || $_referer == 'http://localhost/spielcharts/spielcharts/chart.php' || $_referer == 'http://198.168.1.108/Spielcharts/spielcharts/neuesSpiel_anzSpieler_response.php' || $_referer == 'http://192.168.1.108/Spielcharts/spielcharts/chart.php') {
+else if($_referer == 'http://localhost/spielcharts/spielcharts/neuesSpiel_anzSpieler_response.php' || $_referer == 'http://localhost/spielcharts/spielcharts/chart.php' || $_referer == 'http://198.168.1.108/Spielcharts/spielcharts/neuesSpiel_anzSpieler_response.php' || $_referer == 'http://192.168.1.108/Spielcharts/spielcharts/chart.php' || $_referer == 'http://198.168.1.107/Spielcharts/spielcharts/neuesSpiel_anzSpieler_response.php' || $_referer == 'http://192.168.1.107/Spielcharts/spielcharts/chart.php') {
   $gruppenname = $_SESSION['gruppenname'];
   $anzSpieler = $_SESSION['anzSpieler'];
 }
@@ -35,9 +35,6 @@ $_SESSION['username'] = $username;
 if(!isset($username)) {
   header('Location: index.php');
 }
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -83,11 +80,10 @@ if(!isset($username)) {
           <?php
 
           //---------spielernamen ausgeben
-
           $x = 1;
           while($x <= $anzSpieler) {
             $spieler = "spieler" . $x;
-                        //es werde solange Spieler aus der grossen Datenbank, wo alle Gruppen aufgelistet sind, gezogen, wie in Anzahl spieler gespeichert sind
+            //es werde solange Spieler aus der grossen Datenbank, wo alle Gruppen aufgelistet sind, gezogen, wie in Anzahl spieler gespeichert sind
             if($result = $connect->query("SELECT $spieler FROM gruppennamen WHERE gruppenname = '$gruppenname'")){
               //wenn mehr als 0 Spieler gefunden wurden
               if($result->num_rows > 0) {
@@ -107,9 +103,6 @@ if(!isset($username)) {
             $x++;
           }
           echo "</tr></thead>";
-
-
-
           echo "<tr>";
 
           //---------Ende spielernamen ausgeben
@@ -117,11 +110,11 @@ if(!isset($username)) {
 
   ?>
 
-  <form action="chart_response.php" method="post">
+  <form action="#" method="post">
 
     <?php
 
-    //Punkte aus Datenbank ausgeben
+    //---------Punkte aus Datenbank ausgeben
     if($result = $connect->query("SELECT * FROM spielstaende WHERE gruppenname = '$gruppenname'")) {
       if($result->num_rows > 0) {
         while($row = $result->fetch_object()) {
@@ -135,15 +128,16 @@ if(!isset($username)) {
           }
           echo "</tr>";
         }
-
       }
     }
 
     else{
       echo $connect->error;
     }
+    //---------Ende Punkte aus Datenbank ausgeben
 
-    //Summe aller Punkte ausgeben
+
+    //---------Summe aller Punkte ausgeben
     echo "<tr class='sum'>";
     $x = 1;
     while($x <= $anzSpieler) {
@@ -152,11 +146,12 @@ if(!isset($username)) {
         $tot = $result->fetch_object();
         $plytot = $tot->total;
 
-        echo "<td><span>Total: $plytot</span></td>";
+        echo "<td><span>$plytot</span></td>";
       }
       $x++;
     }
     echo "</tr>";
+    //---------Ende Summe aller Punkte ausgeben
 
     //---------Input Felder & submit Button ausgeben
     echo "<tr class='input' >";
@@ -164,27 +159,13 @@ if(!isset($username)) {
     while($y <= $anzSpieler) {
       echo "<td><input id='eingabe$y' class='eingabe' type='text' name='eingabe$y' ></td>";
       $y++;
-
     }
-
 
     echo "</tr></table>";
     echo "<form>";
     echo "</div>";
     echo "<input class='extraMarg btnEing btn btnSub' id='submit' type='submit' name='submit' value='Eintragen'>";
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //---------Ende Input Felder & submit Button ausgeben
     ?>
   </form>
 
@@ -193,7 +174,7 @@ if(!isset($username)) {
     <img src="Bilder/alpaufzug.jpg" alt="">
     </a>
   </footer>
-  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/chartValid.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

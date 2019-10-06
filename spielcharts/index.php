@@ -18,28 +18,42 @@ session_unset();
 </head>
 
 <body>
+  <header>
+    <h1 class="title" >Spiel Charts</h1>
 
-  <h1 class="title" >Spiel Charts</h1>
+  </header>
 
-  <form class="first" action="index_response.php" method="post">
-    <input class="userN" min_Len="3" type="text" name="userName" placeholder="Benutzername">
-    <p id="pUser"></p>
-    <input class="passW" min_Len="6" type="password" name="password" placeholder="Passwort">
-    <p id="pPw"></p>
-    <input class="btnSub btn" type="submit" name="logIn" value="Login">
-    <p id="pPwRpt"></p>
-  </form>
 
-  <form class="second" action="newAccount.php" method="post">
-    <label class="bottom" for="logIn">Noch kein Account?</label>
 
-    <input class="btn" type="submit" name="logIn" value="Neuer Account">
+  <div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <p class="background" >Halte die Spielstände fest, wenn du mit deinen Freunden Spiele-Abende veranstaltest.<br><br>Ihr könnt jederzeit auf alte Spielstände zurückgreifen und dort weiter spielen, wo ihr aufgehört habt.</p>
+    </div>
+    <div class="col-sm">
+      <form class="first" action="index_response.php" method="post">
+        <label class="bottom" for="userN">Login:</label>
+        <input id="userName" class="userN inp" min_Len="3" type="text" name="userName" placeholder="Benutzername">
+        <input class="passW inp" min_Len="6" type="password" name="password" placeholder="Passwort">
+        <input class="btnSub btn" type="submit" name="logIn" value="Login">
+      </form>
 
-  </form>
+      <form class="second" action="newAccount.php" method="post">
+        <label class="bottom" for="logIn">Noch kein Account?</label>
+
+        <input class="btn" type="submit" name="logIn" value="Neuer Account">
+
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
 
   <footer>
     <a href="http://www.regez-miniart.ch/scherenschnitte/index.html" target="_blank">
-    <img src="Bilder/alpaufzug.jpg" alt="">
+    <img id="azell" src="Bilder/alpaufzug.jpg" alt="">
     </a>
   </footer>
 
